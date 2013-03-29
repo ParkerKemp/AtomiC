@@ -7,9 +7,14 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "Controller.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate>{
+	Controller *controller;
+	}
 
 @property (assign) IBOutlet NSWindow *window;
+
+-(void)updateFrame;
 
 @end

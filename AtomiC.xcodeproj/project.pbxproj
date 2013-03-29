@@ -9,14 +9,18 @@
 /* Begin PBXBuildFile section */
 		2E8EC9711706209F00459B7B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E8EC9701706209F00459B7B /* Cocoa.framework */; };
 		2E8EC97B1706209F00459B7B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2E8EC9791706209F00459B7B /* InfoPlist.strings */; };
-		2E8EC97D1706209F00459B7B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E8EC97C1706209F00459B7B /* main.m */; };
+		2E8EC97D1706209F00459B7B /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2E8EC97C1706209F00459B7B /* main.mm */; };
 		2E8EC9811706209F00459B7B /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2E8EC97F1706209F00459B7B /* Credits.rtf */; };
-		2E8EC9841706209F00459B7B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E8EC9831706209F00459B7B /* AppDelegate.m */; };
+		2E8EC9841706209F00459B7B /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2E8EC9831706209F00459B7B /* AppDelegate.mm */; };
 		2E8EC9871706209F00459B7B /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2E8EC9851706209F00459B7B /* MainMenu.xib */; };
 		2E8EC98F1706209F00459B7B /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E8EC98E1706209F00459B7B /* SenTestingKit.framework */; };
 		2E8EC9901706209F00459B7B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E8EC9701706209F00459B7B /* Cocoa.framework */; };
 		2E8EC9981706209F00459B7B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2E8EC9961706209F00459B7B /* InfoPlist.strings */; };
 		2E8EC99B1706209F00459B7B /* AtomiCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2E8EC99A1706209F00459B7B /* AtomiCTests.m */; };
+		2E8EC9A61706214000459B7B /* Controller.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2E8EC9A41706214000459B7B /* Controller.mm */; };
+		2E8EC9AA1706241100459B7B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E8EC9A91706241100459B7B /* OpenGL.framework */; };
+		2E8EC9AF17062FE700459B7B /* AtomCloud.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2E8EC9AD17062FE700459B7B /* AtomCloud.mm */; };
+		2E8EC9B21706334A00459B7B /* DisplayBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2E8EC9B01706334A00459B7B /* DisplayBuffer.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,11 +41,11 @@
 		2E8EC9751706209F00459B7B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		2E8EC9781706209F00459B7B /* AtomiC-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "AtomiC-Info.plist"; sourceTree = "<group>"; };
 		2E8EC97A1706209F00459B7B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		2E8EC97C1706209F00459B7B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		2E8EC97C1706209F00459B7B /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
 		2E8EC97E1706209F00459B7B /* AtomiC-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AtomiC-Prefix.pch"; sourceTree = "<group>"; };
 		2E8EC9801706209F00459B7B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		2E8EC9821706209F00459B7B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		2E8EC9831706209F00459B7B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		2E8EC9831706209F00459B7B /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		2E8EC9861706209F00459B7B /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		2E8EC98D1706209F00459B7B /* AtomiCTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AtomiCTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E8EC98E1706209F00459B7B /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -49,6 +53,14 @@
 		2E8EC9971706209F00459B7B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		2E8EC9991706209F00459B7B /* AtomiCTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtomiCTests.h; sourceTree = "<group>"; };
 		2E8EC99A1706209F00459B7B /* AtomiCTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AtomiCTests.m; sourceTree = "<group>"; };
+		2E8EC9A41706214000459B7B /* Controller.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Controller.mm; sourceTree = "<group>"; };
+		2E8EC9A51706214000459B7B /* Controller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Controller.h; sourceTree = "<group>"; };
+		2E8EC9A91706241100459B7B /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+		2E8EC9AC170628B500459B7B /* Structs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Structs.h; sourceTree = "<group>"; };
+		2E8EC9AD17062FE700459B7B /* AtomCloud.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AtomCloud.mm; sourceTree = "<group>"; };
+		2E8EC9AE17062FE700459B7B /* AtomCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomCloud.h; sourceTree = "<group>"; };
+		2E8EC9B01706334A00459B7B /* DisplayBuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DisplayBuffer.mm; sourceTree = "<group>"; };
+		2E8EC9B11706334A00459B7B /* DisplayBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayBuffer.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E8EC9AA1706241100459B7B /* OpenGL.framework in Frameworks */,
 				2E8EC9711706209F00459B7B /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -75,6 +88,7 @@
 		2E8EC9641706209E00459B7B = {
 			isa = PBXGroup;
 			children = (
+				2E8EC9A91706241100459B7B /* OpenGL.framework */,
 				2E8EC9761706209F00459B7B /* AtomiC */,
 				2E8EC9931706209F00459B7B /* AtomiCTests */,
 				2E8EC96F1706209F00459B7B /* Frameworks */,
@@ -114,9 +128,10 @@
 		2E8EC9761706209F00459B7B /* AtomiC */ = {
 			isa = PBXGroup;
 			children = (
-				2E8EC9821706209F00459B7B /* AppDelegate.h */,
-				2E8EC9831706209F00459B7B /* AppDelegate.m */,
-				2E8EC9851706209F00459B7B /* MainMenu.xib */,
+				2E8EC9AC170628B500459B7B /* Structs.h */,
+				2E8EC9B3170633A900459B7B /* Rendering */,
+				2E8EC9A8170621C700459B7B /* Game Logic */,
+				2E8EC9A7170621AF00459B7B /* OSX Interface */,
 				2E8EC9771706209F00459B7B /* Supporting Files */,
 			);
 			path = AtomiC;
@@ -127,7 +142,7 @@
 			children = (
 				2E8EC9781706209F00459B7B /* AtomiC-Info.plist */,
 				2E8EC9791706209F00459B7B /* InfoPlist.strings */,
-				2E8EC97C1706209F00459B7B /* main.m */,
+				2E8EC97C1706209F00459B7B /* main.mm */,
 				2E8EC97E1706209F00459B7B /* AtomiC-Prefix.pch */,
 				2E8EC97F1706209F00459B7B /* Credits.rtf */,
 			);
@@ -151,6 +166,36 @@
 				2E8EC9961706209F00459B7B /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2E8EC9A7170621AF00459B7B /* OSX Interface */ = {
+			isa = PBXGroup;
+			children = (
+				2E8EC9851706209F00459B7B /* MainMenu.xib */,
+				2E8EC9821706209F00459B7B /* AppDelegate.h */,
+				2E8EC9831706209F00459B7B /* AppDelegate.mm */,
+			);
+			name = "OSX Interface";
+			sourceTree = "<group>";
+		};
+		2E8EC9A8170621C700459B7B /* Game Logic */ = {
+			isa = PBXGroup;
+			children = (
+				2E8EC9A51706214000459B7B /* Controller.h */,
+				2E8EC9A41706214000459B7B /* Controller.mm */,
+				2E8EC9AE17062FE700459B7B /* AtomCloud.h */,
+				2E8EC9AD17062FE700459B7B /* AtomCloud.mm */,
+			);
+			name = "Game Logic";
+			sourceTree = "<group>";
+		};
+		2E8EC9B3170633A900459B7B /* Rendering */ = {
+			isa = PBXGroup;
+			children = (
+				2E8EC9B11706334A00459B7B /* DisplayBuffer.h */,
+				2E8EC9B01706334A00459B7B /* DisplayBuffer.mm */,
+			);
+			name = Rendering;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,8 +306,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E8EC97D1706209F00459B7B /* main.m in Sources */,
-				2E8EC9841706209F00459B7B /* AppDelegate.m in Sources */,
+				2E8EC97D1706209F00459B7B /* main.mm in Sources */,
+				2E8EC9841706209F00459B7B /* AppDelegate.mm in Sources */,
+				2E8EC9A61706214000459B7B /* Controller.mm in Sources */,
+				2E8EC9AF17062FE700459B7B /* AtomCloud.mm in Sources */,
+				2E8EC9B21706334A00459B7B /* DisplayBuffer.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
