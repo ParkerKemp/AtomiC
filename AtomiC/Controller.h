@@ -10,19 +10,31 @@
 #define __AtomiC__Controller__
 
 #include <OpenGL/OpenGL.h>
+
 #include "Structs.h"
+#include "AtomCloud.h"
+#include "DisplayBuffer.h"
 
 class Controller{
 	private:
 		NSOpenGLContext *context;
 		NSWindow *window;
+		DisplayBuffer *buffer;
+		AtomCloud *cloud;
 	public:
 		Controller(NSWindow *win);
 		~Controller();
+		
+		void init();
+		
+		void loadLogic();
 		
 		void initOpenGL();
 		void customizeWindow();
 		
 		void update();
+		
+		void logic();
+		void rendering();
 	};
 #endif /* defined(__AtomiC__Controller__) */

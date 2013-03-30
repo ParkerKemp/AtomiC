@@ -16,10 +16,13 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification*)aNotification{
 	controller = new Controller(self.window);
-	controller->customizeWindow();
-	controller->initOpenGL();
+	controller->init();
 	
 	[NSTimer scheduledTimerWithTimeInterval: 0 target: self selector: @selector(updateFrame) userInfo: nil repeats: YES];
+	}
+
+-(BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication*)application{
+	return YES;
 	}
 
 -(void)updateFrame{

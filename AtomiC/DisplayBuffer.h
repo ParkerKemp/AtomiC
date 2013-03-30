@@ -12,17 +12,30 @@
 #include <Cocoa/Cocoa.h>
 
 #include "Structs.h"
+#include "AtomCloud.h"
+
+struct SpriteData{
+	Vertex vertex;
+	float size;
+	};
 
 class DisplayBuffer{
 	private:
-		Vertex *spriteVertices;
+		SpriteData *spriteVertices;
+		int spriteCount;
 	public:
 		DisplayBuffer();
 		~DisplayBuffer();
 		
 		void initSpriteVertices(int num);
 		
-		void addSprite(LocationF loc);
+		void addSprite(LocationF loc, float size);
+		
+		void drawSprites();
+		
+		void drawCloud(AtomCloud *cloud);
+		
+		void resetCounters();
 
 	};
 

@@ -19,10 +19,46 @@ Controller::~Controller(){
 	[window release];
 	}
 
+void Controller::init(){
+	customizeWindow();
+	initOpenGL();
+	loadLogic();
+	}
+
 void Controller::update(){
-	glClearColor(1, 1, 0, 1);
+	logic();
+	rendering();
+	}
+
+void Controller::logic(){
+	if(cloud->count() < 50){
+		printf("%i\n", cloud->count());
+		cloud->addAtom(makeAtom(rand()%windowWidth, rand()%windowHeight, 5));
+		}
+	}
+
+void Controller::rendering(){
+	//Clear screen with yellow
+	glClearColor(1, 1, 1, 1);
 	glClear(GL_COLOR_BUFFER_BIT);
+	
+	//buffer->resetCounters();
+	
+	cloud->updateVertexBuffer();
+	
+	buffer->drawCloud(cloud);
+	
+	//Swap buffers
 	[context flushBuffer];
+	}
+
+void Controller::loadLogic(){
+
+	srand((unsigned)time(NULL));
+
+	buffer = new DisplayBuffer;
+	cloud = new AtomCloud(50);
+	buffer->initSpriteVertices(100);
 	}
 
 void Controller::initOpenGL(){
@@ -53,6 +89,6 @@ void Controller::initOpenGL(){
 	}
 
 void Controller::customizeWindow(){
-	//Determine what the "display" attribute actually does.
-	[window setFrame: CGRectMake(0, 0, windowWidth, windowHeight) display: YES];
+	//TODO: Determine what the "display" attribute actually does.
+	[window setFrame: CGRectMake(200, 200, windowWidth, windowHeight) display: YES];
 	}

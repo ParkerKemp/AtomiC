@@ -11,30 +11,34 @@
 
 #include <list>
 
-#include "Structs.h"
-#include "DisplayBuffer.h"
-
 struct Atom{
-	LocationF loc;
+	float x;
+	float y;
 	float size;
 	};
 
 class AtomCloud{
 	private:
 		std::list<Atom> atoms;
+		float *_vertices;
+		int _count, _max;
+		
 	public:
-		AtomCloud();
+		AtomCloud(int maxAtoms);
 		~AtomCloud();
 		
 		void addAtom(Atom a);
-		void pushToBuffer(DisplayBuffer* buffer);
+		void updateVertexBuffer();
+		
+		float *vertexBuffer(){return _vertices;}
+		int count(){return _count;}
 	};
 
 Atom makeAtom(float x, float y, float s);
 
 
 
-#endif /* defined(__AtomiC__AtomCloud__) */
+#endif
 
 //End of file
 
