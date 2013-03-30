@@ -31,10 +31,12 @@ void Controller::update(){
 	}
 
 void Controller::logic(){
-	if(cloud->count() < 50){
-		printf("%i\n", cloud->count());
-		cloud->addAtom(makeAtom(rand()%windowWidth, rand()%windowHeight, 5));
-		}
+	//if(cloud->count() < 50){
+	//	printf("%i\n", cloud->count());
+	//	cloud->addAtom(makeAtom(rand()%windowWidth, rand()%windowHeight, 5));
+	//	}
+	
+	cloud->update();
 	}
 
 void Controller::rendering(){
@@ -58,6 +60,9 @@ void Controller::loadLogic(){
 
 	buffer = new DisplayBuffer;
 	cloud = new AtomCloud(50);
+	
+	cloud->initBurst(50, 200, 200, 4, 2);
+	
 	buffer->initSpriteVertices(100);
 	}
 
@@ -83,9 +88,9 @@ void Controller::initOpenGL(){
 
 	glMatrixMode(GL_MODELVIEW);
 
-	glEnable(GL_SCISSOR_TEST);
-	glEnable(GL_BLEND);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	//glEnable(GL_SCISSOR_TEST);
+	//glEnable(GL_BLEND);
+	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	}
 
 void Controller::customizeWindow(){

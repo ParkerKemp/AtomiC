@@ -9,25 +9,60 @@
 #ifndef __AtomiC__AtomCloud__
 #define __AtomiC__AtomCloud__
 
-#include <list>
+class AtomVec{
+	public:
+		float x, y;
+		
+		AtomVec(){}
+		
+		AtomVec(float xx, float yy){x = xx; y = yy;}
+		
+		AtomVec operator * (float m){
+			return AtomVec(x * m, y * m);
+			}
+	};
+
+class AtomLoc{
+	public:
+		float x;
+		float y;
+		
+		void operator += (AtomVec vec){
+			x += vec.x;
+			y += vec.y;
+			}
+	};
+
+struct AtomBurstData{
+	AtomLoc loc;
+	float speed;
+	};
 
 struct Atom{
-	float x;
-	float y;
+	AtomLoc loc;
+	AtomVec vec;
 	float size;
 	};
 
 class AtomCloud{
 	private:
-		std::list<Atom> atoms;
+		Atom *atoms;
 		float *_vertices;
 		int _count, _max;
+		
+		AtomBurstData burst;
 		
 	public:
 		AtomCloud(int maxAtoms);
 		~AtomCloud();
 		
-		void addAtom(Atom a);
+		void initBurst(int num, float x, float y, float speed, float speedVariance);
+		
+		bool addAtom(Atom a);
+		void fillAtoms(Atom a);
+		
+		void update();
+		
 		void updateVertexBuffer();
 		
 		float *vertexBuffer(){return _vertices;}
@@ -36,9 +71,12 @@ class AtomCloud{
 
 Atom makeAtom(float x, float y, float s);
 
+AtomVec randomVector();
+
+float variedValue(float value, float variance);
+
 
 
 #endif
 
 //End of file
-
