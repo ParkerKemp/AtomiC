@@ -17,11 +17,16 @@ Controller::Controller(NSWindow *win){
 
 Controller::~Controller(){
 	[window release];
+	if(cloud){
+		for(int a = 0; a < 2; a++)
+			delete cloud[a];
+		delete[] cloud;
+		}
 	}
 
 void Controller::init(){
 	customizeWindow();
-	initOpenGL();
+	glController = new GLController(window);
 	loadLogic();
 	}
 
@@ -35,39 +40,30 @@ void Controller::logic(){
 	//	printf("%i\n", cloud->count());
 	//	cloud->addAtom(makeAtom(rand()%windowWidth, rand()%windowHeight, 5));
 	//	}
-	
-	cloud->update();
+	for(int a = 0; a < 2; a++)
+		cloud[a]->update();
 	}
 
 void Controller::rendering(){
-	//Clear screen with yellow
-	glClearColor(1, 1, 1, 1);
-	glClear(GL_COLOR_BUFFER_BIT);
-	
-	//buffer->resetCounters();
-	
-	cloud->updateVertexBuffer();
-	
-	buffer->drawCloud(cloud);
-	
-	//Swap buffers
-	[context flushBuffer];
+	glController->clear(0.6, 0.6, 0.6, 1);
+	for(int a = 0; a < 2; a++)
+		glController->addAtomCloud(cloud[a]);
+	glController->render();
 	}
 
 void Controller::loadLogic(){
-
 	srand((unsigned)time(NULL));
-
-	buffer = new DisplayBuffer;
-	cloud = new AtomCloud(50);
+	cloud = new AtomCloud*[2];
+	for(int a = 0; a < 2; a++)
+		cloud[a] = new AtomCloud(50);
 	
-	cloud->initBurst(50, 200, 200, 4, 2);
-	
-	buffer->initSpriteVertices(100);
+	cloud[0]->initBurst(50, 300, 200, 4, 2);
+	cloud[0]->setGravSource(500, 250);
+	cloud[1]->initBurst(50, 700, 200, 4, 2);
 	}
 
 void Controller::initOpenGL(){
-	NSOpenGLPixelFormatAttribute attributes[] = {NSOpenGLPFADoubleBuffer, 0};
+	/*NSOpenGLPixelFormatAttribute attributes[] = {NSOpenGLPFADoubleBuffer, 0};
 	NSOpenGLPixelFormat *pixelFormat = [[NSOpenGLPixelFormat alloc] initWithAttributes: attributes];
 	context = [[NSOpenGLContext alloc] initWithFormat:pixelFormat shareContext:nil];
 	[context setView:[window contentView]];
@@ -88,9 +84,48 @@ void Controller::initOpenGL(){
 
 	glMatrixMode(GL_MODELVIEW);
 
-	//glEnable(GL_SCISSOR_TEST);
-	//glEnable(GL_BLEND);
-	//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	GLuint vertexShader, fragmentShader;
+	//const char *code =
+	char *code = shaderCode("PointSpriteShader.sl");
+	if(!code)
+		return;
+	int *length = new int;
+	*length = int(strlen(code));
+	printf("%i\n", *length);
+	
+	vertexShader = glCreateShader(GL_VERTEX_SHADER);
+	fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+	glShaderSource(vertexShader, 1, &code, length);
+	
+	glCompileShader(vertexShader);
+	
+	GLint compiled;
+	glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &compiled);
+	if(compiled == GL_FALSE)
+		printf("Failed to compile shader.\n");
+	else
+		printf("Successfully compiled shader!\n");
+	
+	char log[200];
+	
+	glGetShaderInfoLog(vertexShader, 200, 0, log);
+	
+	printf("%s\n", log);
+	
+	GLuint programObject = glCreateProgram();
+	
+	glAttachShader(programObject, vertexShader);
+	glLinkProgram(programObject);
+	
+	GLint linked;
+	glGetProgramiv(programObject, GL_LINK_STATUS, &linked);
+	if(linked == GL_FALSE)
+		printf("Failed to link program.\n");
+	else
+		printf("Successfully linked program!\n");
+	
+	glUseProgram(programObject);
+	//glUseProgram(0);*/
 	}
 
 void Controller::customizeWindow(){

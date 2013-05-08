@@ -9,6 +9,8 @@
 #ifndef AtomiC_Structs_h
 #define AtomiC_Structs_h
 
+#import <Cocoa/Cocoa.h>
+
 #define windowWidth 1000
 #define windowHeight 500
 
@@ -21,5 +23,7 @@ struct Vertex{
 	float x;
 	float y;
 	};
+
+NSString *resourcePath(const char *filename);
 
 #endif

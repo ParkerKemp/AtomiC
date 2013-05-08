@@ -10,6 +10,8 @@
 #define __AtomiC__DisplayBuffer__
 
 #include <Cocoa/Cocoa.h>
+//#include <iostream>
+#include <fstream>
 
 #include "Structs.h"
 #include "AtomCloud.h"
@@ -23,6 +25,7 @@ class DisplayBuffer{
 	private:
 		SpriteData *spriteVertices;
 		int spriteCount;
+		GLuint tex;
 	public:
 		DisplayBuffer();
 		~DisplayBuffer();
@@ -40,3 +43,5 @@ class DisplayBuffer{
 	};
 
 #endif
+
+GLuint loadPNG(const char *filename);

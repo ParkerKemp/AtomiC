@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E6332E7170D358900FEC28F /* libpng.dll in Resources */ = {isa = PBXBuildFile; fileRef = 2E6332E6170D358900FEC28F /* libpng.dll */; };
+		2E81F5B51708F53600716E90 /* Particle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E81F5B41708F53600716E90 /* Particle.png */; };
 		2E8EC9711706209F00459B7B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E8EC9701706209F00459B7B /* Cocoa.framework */; };
 		2E8EC97B1706209F00459B7B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2E8EC9791706209F00459B7B /* InfoPlist.strings */; };
 		2E8EC97D1706209F00459B7B /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2E8EC97C1706209F00459B7B /* main.mm */; };
@@ -21,6 +23,9 @@
 		2E8EC9AA1706241100459B7B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E8EC9A91706241100459B7B /* OpenGL.framework */; };
 		2E8EC9AF17062FE700459B7B /* AtomCloud.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2E8EC9AD17062FE700459B7B /* AtomCloud.mm */; };
 		2E8EC9B21706334A00459B7B /* DisplayBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2E8EC9B01706334A00459B7B /* DisplayBuffer.mm */; };
+		2ED050C6173AE581006C6542 /* PointSpriteShader.sl in Resources */ = {isa = PBXBuildFile; fileRef = 2ED050C5173AE581006C6542 /* PointSpriteShader.sl */; };
+		2ED050C8173AEC75006C6542 /* Structs.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2ED050C7173AEC75006C6542 /* Structs.mm */; };
+		2ED050CB173AEF3D006C6542 /* GLController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2ED050C9173AEF3D006C6542 /* GLController.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2E6332E6170D358900FEC28F /* libpng.dll */ = {isa = PBXFileReference; lastKnownFileType = file; path = libpng.dll; sourceTree = "<group>"; };
+		2E81F5B41708F53600716E90 /* Particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Particle.png; sourceTree = "<group>"; };
 		2E8EC96D1706209F00459B7B /* AtomiC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AtomiC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E8EC9701706209F00459B7B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		2E8EC9731706209F00459B7B /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -61,6 +68,10 @@
 		2E8EC9AE17062FE700459B7B /* AtomCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomCloud.h; sourceTree = "<group>"; };
 		2E8EC9B01706334A00459B7B /* DisplayBuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DisplayBuffer.mm; sourceTree = "<group>"; };
 		2E8EC9B11706334A00459B7B /* DisplayBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayBuffer.h; sourceTree = "<group>"; };
+		2ED050C5173AE581006C6542 /* PointSpriteShader.sl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PointSpriteShader.sl; sourceTree = "<group>"; };
+		2ED050C7173AEC75006C6542 /* Structs.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Structs.mm; sourceTree = "<group>"; };
+		2ED050C9173AEF3D006C6542 /* GLController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GLController.mm; sourceTree = "<group>"; };
+		2ED050CA173AEF3D006C6542 /* GLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLController.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,10 +96,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E81F5B61708F53C00716E90 /* Textures */ = {
+			isa = PBXGroup;
+			children = (
+				2E81F5B41708F53600716E90 /* Particle.png */,
+			);
+			name = Textures;
+			sourceTree = "<group>";
+		};
 		2E8EC9641706209E00459B7B = {
 			isa = PBXGroup;
 			children = (
-				2E8EC9A91706241100459B7B /* OpenGL.framework */,
 				2E8EC9761706209F00459B7B /* AtomiC */,
 				2E8EC9931706209F00459B7B /* AtomiCTests */,
 				2E8EC96F1706209F00459B7B /* Frameworks */,
@@ -108,6 +126,7 @@
 		2E8EC96F1706209F00459B7B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2E8EC9A91706241100459B7B /* OpenGL.framework */,
 				2E8EC9701706209F00459B7B /* Cocoa.framework */,
 				2E8EC98E1706209F00459B7B /* SenTestingKit.framework */,
 				2E8EC9721706209F00459B7B /* Other Frameworks */,
@@ -129,9 +148,11 @@
 			isa = PBXGroup;
 			children = (
 				2E8EC9AC170628B500459B7B /* Structs.h */,
+				2ED050C7173AEC75006C6542 /* Structs.mm */,
 				2E8EC9B3170633A900459B7B /* Rendering */,
 				2E8EC9A8170621C700459B7B /* Game Logic */,
 				2E8EC9A7170621AF00459B7B /* OSX Interface */,
+				2E81F5B61708F53C00716E90 /* Textures */,
 				2E8EC9771706209F00459B7B /* Supporting Files */,
 			);
 			path = AtomiC;
@@ -140,6 +161,7 @@
 		2E8EC9771706209F00459B7B /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2E6332E6170D358900FEC28F /* libpng.dll */,
 				2E8EC9781706209F00459B7B /* AtomiC-Info.plist */,
 				2E8EC9791706209F00459B7B /* InfoPlist.strings */,
 				2E8EC97C1706209F00459B7B /* main.mm */,
@@ -192,8 +214,11 @@
 		2E8EC9B3170633A900459B7B /* Rendering */ = {
 			isa = PBXGroup;
 			children = (
+				2ED050CA173AEF3D006C6542 /* GLController.h */,
+				2ED050C9173AEF3D006C6542 /* GLController.mm */,
 				2E8EC9B11706334A00459B7B /* DisplayBuffer.h */,
 				2E8EC9B01706334A00459B7B /* DisplayBuffer.mm */,
+				2ED050C5173AE581006C6542 /* PointSpriteShader.sl */,
 			);
 			name = Rendering;
 			sourceTree = "<group>";
@@ -272,6 +297,8 @@
 				2E8EC97B1706209F00459B7B /* InfoPlist.strings in Resources */,
 				2E8EC9811706209F00459B7B /* Credits.rtf in Resources */,
 				2E8EC9871706209F00459B7B /* MainMenu.xib in Resources */,
+				2E81F5B51708F53600716E90 /* Particle.png in Resources */,
+				2ED050C6173AE581006C6542 /* PointSpriteShader.sl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2E8EC9981706209F00459B7B /* InfoPlist.strings in Resources */,
+				2E6332E7170D358900FEC28F /* libpng.dll in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +339,8 @@
 				2E8EC9A61706214000459B7B /* Controller.mm in Sources */,
 				2E8EC9AF17062FE700459B7B /* AtomCloud.mm in Sources */,
 				2E8EC9B21706334A00459B7B /* DisplayBuffer.mm in Sources */,
+				2ED050C8173AEC75006C6542 /* Structs.mm in Sources */,
+				2ED050CB173AEF3D006C6542 /* GLController.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,7 +461,9 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AtomiC/AtomiC-Prefix.pch";
+				HEADER_SEARCH_PATHS = /usr/X11/include;
 				INFOPLIST_FILE = "AtomiC/AtomiC-Info.plist";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -443,7 +475,9 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "AtomiC/AtomiC-Prefix.pch";
+				HEADER_SEARCH_PATHS = /usr/X11/include;
 				INFOPLIST_FILE = "AtomiC/AtomiC-Info.plist";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -498,6 +532,7 @@
 				2E8EC9A01706209F00459B7B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2E8EC9A11706209F00459B7B /* Build configuration list for PBXNativeTarget "AtomiCTests" */ = {
 			isa = XCConfigurationList;
@@ -506,6 +541,7 @@
 				2E8EC9A31706209F00459B7B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

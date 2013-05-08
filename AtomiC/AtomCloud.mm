@@ -13,6 +13,7 @@ AtomCloud::AtomCloud(int maxAtoms){
 	_max = maxAtoms;
 	atoms = new Atom[maxAtoms];
 	_vertices = new float[maxAtoms * 2];
+	gravEnabled = false;
 	}
 
 AtomCloud::~AtomCloud(){
@@ -37,6 +38,12 @@ void AtomCloud::fillAtoms(Atom a){
 	while(addAtom(a));
 	}
 
+void AtomCloud::setGravSource(float x, float y){
+	gravSource.x = x;
+	gravSource.y = y;
+	gravEnabled = true;
+	}
+
 void AtomCloud::initBurst(int num, float x, float y, float speed, float speedVariance){
 	//Return if num too high
 	if(num > _max)
@@ -55,6 +62,25 @@ void AtomCloud::initBurst(int num, float x, float y, float speed, float speedVar
 	}
 
 void AtomCloud::update(){
+	if(gravEnabled)
+		updateVectors();
+	updateLocations();
+	}
+
+void AtomCloud::updateVectors(){
+	//TODO: add gravSource influence on vectors
+	AtomVec temp;
+	for(int a = 0; a < _count; a++){
+		temp = gravSource - atoms[a].loc;
+		//temp.x = 1 / temp.x;
+		//temp.y = 1 / temp.y;
+		temp.normalize();
+		temp = temp * 0.2;
+		atoms[a].vec += temp;
+		}
+	}
+
+void AtomCloud::updateLocations(){
 	for(int a = 0; a < _count; a++){
 		atoms[a].loc += atoms[a].vec;
 		}

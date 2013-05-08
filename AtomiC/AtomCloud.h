@@ -20,6 +20,17 @@ class AtomVec{
 		AtomVec operator * (float m){
 			return AtomVec(x * m, y * m);
 			}
+			
+		void operator += (AtomVec vec){
+			x += vec.x;
+			y += vec.y;
+			}
+			
+		void normalize(){
+			float temp = sqrt(x * x + y * y);
+			x /= temp;
+			y /= temp;
+			}
 	};
 
 class AtomLoc{
@@ -30,6 +41,10 @@ class AtomLoc{
 		void operator += (AtomVec vec){
 			x += vec.x;
 			y += vec.y;
+			}
+			
+		AtomVec operator - (AtomLoc loc){
+			return AtomVec(x - loc.x, y - loc.y);
 			}
 	};
 
@@ -50,6 +65,9 @@ class AtomCloud{
 		float *_vertices;
 		int _count, _max;
 		
+		AtomLoc gravSource;
+		bool gravEnabled;
+		
 		AtomBurstData burst;
 		
 	public:
@@ -61,7 +79,11 @@ class AtomCloud{
 		bool addAtom(Atom a);
 		void fillAtoms(Atom a);
 		
+		void setGravSource(float x, float y);
+		
 		void update();
+		void updateVectors();
+		void updateLocations();
 		
 		void updateVertexBuffer();
 		

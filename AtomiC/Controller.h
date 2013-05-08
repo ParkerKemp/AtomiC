@@ -15,12 +15,15 @@
 #include "AtomCloud.h"
 #include "DisplayBuffer.h"
 
+#include "GLController.h"
+
 class Controller{
 	private:
-		NSOpenGLContext *context;
+		GLController *glController;
+		AtomCloud **cloud;
+		bool a = false;
 		NSWindow *window;
-		DisplayBuffer *buffer;
-		AtomCloud *cloud;
+		
 	public:
 		Controller(NSWindow *win);
 		~Controller();
