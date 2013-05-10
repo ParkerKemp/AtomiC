@@ -23,9 +23,11 @@
 		2E8EC9AA1706241100459B7B /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E8EC9A91706241100459B7B /* OpenGL.framework */; };
 		2E8EC9AF17062FE700459B7B /* AtomCloud.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2E8EC9AD17062FE700459B7B /* AtomCloud.mm */; };
 		2E8EC9B21706334A00459B7B /* DisplayBuffer.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2E8EC9B01706334A00459B7B /* DisplayBuffer.mm */; };
-		2ED050C6173AE581006C6542 /* PointSpriteShader.sl in Resources */ = {isa = PBXBuildFile; fileRef = 2ED050C5173AE581006C6542 /* PointSpriteShader.sl */; };
+		2ED050C6173AE581006C6542 /* VertexShader.sl in Resources */ = {isa = PBXBuildFile; fileRef = 2ED050C5173AE581006C6542 /* VertexShader.sl */; };
 		2ED050C8173AEC75006C6542 /* Structs.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2ED050C7173AEC75006C6542 /* Structs.mm */; };
 		2ED050CB173AEF3D006C6542 /* GLController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2ED050C9173AEF3D006C6542 /* GLController.mm */; };
+		2ED050CD173C0821006C6542 /* FragmentShader.sl in Resources */ = {isa = PBXBuildFile; fileRef = 2ED050CC173C0820006C6542 /* FragmentShader.sl */; };
+		2ED050D0173C9A4D006C6542 /* Pipeline.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2ED050CE173C9A4C006C6542 /* Pipeline.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,10 +70,13 @@
 		2E8EC9AE17062FE700459B7B /* AtomCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomCloud.h; sourceTree = "<group>"; };
 		2E8EC9B01706334A00459B7B /* DisplayBuffer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = DisplayBuffer.mm; sourceTree = "<group>"; };
 		2E8EC9B11706334A00459B7B /* DisplayBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisplayBuffer.h; sourceTree = "<group>"; };
-		2ED050C5173AE581006C6542 /* PointSpriteShader.sl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PointSpriteShader.sl; sourceTree = "<group>"; };
+		2ED050C5173AE581006C6542 /* VertexShader.sl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = VertexShader.sl; sourceTree = "<group>"; };
 		2ED050C7173AEC75006C6542 /* Structs.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Structs.mm; sourceTree = "<group>"; };
 		2ED050C9173AEF3D006C6542 /* GLController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = GLController.mm; sourceTree = "<group>"; };
 		2ED050CA173AEF3D006C6542 /* GLController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GLController.h; sourceTree = "<group>"; };
+		2ED050CC173C0820006C6542 /* FragmentShader.sl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FragmentShader.sl; sourceTree = "<group>"; };
+		2ED050CE173C9A4C006C6542 /* Pipeline.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = Pipeline.mm; sourceTree = "<group>"; };
+		2ED050CF173C9A4D006C6542 /* Pipeline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pipeline.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,9 +223,20 @@
 				2ED050C9173AEF3D006C6542 /* GLController.mm */,
 				2E8EC9B11706334A00459B7B /* DisplayBuffer.h */,
 				2E8EC9B01706334A00459B7B /* DisplayBuffer.mm */,
-				2ED050C5173AE581006C6542 /* PointSpriteShader.sl */,
+				2ED050CF173C9A4D006C6542 /* Pipeline.h */,
+				2ED050CE173C9A4C006C6542 /* Pipeline.mm */,
+				2ED050D1173C9C60006C6542 /* Shaders */,
 			);
 			name = Rendering;
+			sourceTree = "<group>";
+		};
+		2ED050D1173C9C60006C6542 /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				2ED050C5173AE581006C6542 /* VertexShader.sl */,
+				2ED050CC173C0820006C6542 /* FragmentShader.sl */,
+			);
+			name = Shaders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,7 +314,8 @@
 				2E8EC9811706209F00459B7B /* Credits.rtf in Resources */,
 				2E8EC9871706209F00459B7B /* MainMenu.xib in Resources */,
 				2E81F5B51708F53600716E90 /* Particle.png in Resources */,
-				2ED050C6173AE581006C6542 /* PointSpriteShader.sl in Resources */,
+				2ED050C6173AE581006C6542 /* VertexShader.sl in Resources */,
+				2ED050CD173C0821006C6542 /* FragmentShader.sl in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +358,7 @@
 				2E8EC9B21706334A00459B7B /* DisplayBuffer.mm in Sources */,
 				2ED050C8173AEC75006C6542 /* Structs.mm in Sources */,
 				2ED050CB173AEF3D006C6542 /* GLController.mm in Sources */,
+				2ED050D0173C9A4D006C6542 /* Pipeline.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,6 +481,7 @@
 				GCC_PREFIX_HEADER = "AtomiC/AtomiC-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/X11/include;
 				INFOPLIST_FILE = "AtomiC/AtomiC-Info.plist";
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -477,6 +496,7 @@
 				GCC_PREFIX_HEADER = "AtomiC/AtomiC-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/X11/include;
 				INFOPLIST_FILE = "AtomiC/AtomiC-Info.plist";
+				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;

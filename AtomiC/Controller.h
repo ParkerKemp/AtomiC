@@ -32,7 +32,6 @@ class Controller{
 		
 		void loadLogic();
 		
-		void initOpenGL();
 		void customizeWindow();
 		
 		void update();

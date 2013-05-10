@@ -13,14 +13,16 @@
 
 @implementation AppDelegate
 
-- (void)dealloc{
+-(void)dealloc{
     [super dealloc];
 	}
 
-- (void)applicationDidFinishLaunching:(NSNotification*)aNotification{
+-(void)applicationDidFinishLaunching:(NSNotification*)aNotification{
 	controller = new Controller(self.window);
 	controller->init();
-	
+	while(![self.window isVisible]){
+		printf("Not visible yet.\n");
+		}
 	[NSTimer scheduledTimerWithTimeInterval: 0 target: self selector: @selector(updateFrame) userInfo: nil repeats: YES];
 	}
 

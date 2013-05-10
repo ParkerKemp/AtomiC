@@ -14,13 +14,15 @@
 #include "Structs.h"
 #include "DisplayBuffer.h"
 #include "AtomCloud.h"
+#include "Pipeline.h"
 #include <fstream>
 
 class GLController{
 	private:
 		DisplayBuffer *buffer;
 		NSOpenGLContext *context;
-		GLuint pointSpriteShader;
+		GLuint pointSpriteShader, programObject;
+		Pipeline *pipeline;
 	public:
 		GLController(NSWindow *window);
 		~GLController();
@@ -36,6 +38,6 @@ class GLController{
 		
 	};
 
-char *shaderCode(const char *filename);
+//char *shaderCode(const char *filename);
 
 #endif /* defined(__AtomiC__GLController__) */

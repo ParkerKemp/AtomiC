@@ -11,7 +11,7 @@
 GLController::GLController(NSWindow *window){
 	context = 0;
 	initOpenGL(window);
-	buffer = new DisplayBuffer;
+	buffer = new DisplayBuffer(programObject);
 		
 	buffer->initSpriteVertices(100);
 	}
@@ -21,7 +21,6 @@ GLController::~GLController(){
 		delete buffer;
 	if(context)
 		[context release];
-	
 	}
 
 void GLController::initOpenGL(NSWindow *window){
@@ -46,22 +45,12 @@ void GLController::initOpenGL(NSWindow *window){
 
 	glMatrixMode(GL_MODELVIEW);
 	
-	pointSpriteShader = loadShader(GL_VERTEX_SHADER, "PointSpriteShader.sl");
-
-	GLuint programObject = glCreateProgram();
-	
-	glAttachShader(programObject, pointSpriteShader);
-	glLinkProgram(programObject);
-	
-	GLint linked;
-	glGetProgramiv(programObject, GL_LINK_STATUS, &linked);
-	if(linked == GL_FALSE)
-		printf("Failed to link program.\n");
-	else
-		printf("Successfully linked program!\n");
-	
-	glUseProgram(programObject);
-	//glUseProgram(0);
+	//Load shaders into pipeline and activate it
+	pipeline = new Pipeline;
+	pipeline->loadVertexShader(resourcePathC("VertexShader.sl"));
+	pipeline->loadFragmentShader(resourcePathC("FragmentShader.sl"));
+	pipeline->linkProgram();
+	pipeline->activate();
 	}
 
 void GLController::render(){
@@ -94,7 +83,7 @@ GLuint GLController::loadShader(GLenum type, const char *filename){
 		printf("Successfully compiled shader!\n");
 	else{
 		char log[200];
-		printf("Failed to compile shader.\n");
+		printf("Failed to compile shader: %s\n", filename);
 		glGetShaderInfoLog(shader, 200, 0, log);
 		printf("%s\n", log);
 		}
@@ -102,7 +91,7 @@ GLuint GLController::loadShader(GLenum type, const char *filename){
 	return shader;
 	}
 
-char *shaderCode(const char *filename){
+/*char *shaderCode(const char *filename){
 	char *code;
 	int fileLength;
 	
@@ -124,7 +113,7 @@ char *shaderCode(const char *filename){
 
 	return code;
 	}
-
+*/
 
 //End of file
 

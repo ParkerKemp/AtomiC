@@ -25,5 +25,6 @@ struct Vertex{
 	};
 
 NSString *resourcePath(const char *filename);
+const char *resourcePathC(const char *filename);
 
 #endif

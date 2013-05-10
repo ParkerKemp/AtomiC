@@ -8,10 +8,11 @@
 
 #include "DisplayBuffer.h"
 
-DisplayBuffer::DisplayBuffer(){
+DisplayBuffer::DisplayBuffer(GLuint program){
 	//Temp
 	tex = loadPNG("Particle.png");//png_texture_load("Particle.png", 0, 0);
 
+	programObject = program;
 	//Initialize pointer with null value
 	spriteVertices = 0;
 	
@@ -62,32 +63,40 @@ void DisplayBuffer::drawSprites(){
 	}
 
 void DisplayBuffer::drawCloud(AtomCloud *cloud){
-	
+	GLint uniformLoc;
 	//Temp: set color to blue
 	glColor4f(0, 0, 1, 1);
 	
 	glPointSize(50);
 	
-	//glEnable(GL_TEXTURE_2D);
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-	//glEnable(GL_POINT_SPRITE);
-	glBindTexture(GL_TEXTURE_2D, tex);
-
+	glEnable(GL_POINT_SPRITE);
+	glEnable(GL_PROGRAM_POINT_SIZE_EXT);
 	glEnableClientState(GL_VERTEX_ARRAY);
 	glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+
+	uniformLoc = glGetUniformLocation(programObject, "tex");
+
+	glUniform1i(uniformLoc, 0);
+	glActiveTexture(GL_TEXTURE0);
+	glBindTexture(GL_TEXTURE_2D, tex);
+	glEnable(GL_TEXTURE_2D);
 	
-	//glVertexPointer(2, GL_FLOAT, 0, cloud->vertexBuffer());
+	glVertexPointer(2, GL_FLOAT, 0, cloud->vertexBuffer());
 	
-	//glDrawArrays(GL_POINTS, 0, cloud->count());
+	//Use Tex Coords to send particle sizes to vertex shader
+	glTexCoordPointer(1, GL_FLOAT, 0, cloud->sizeBuffer());
 	
-	float verts[] = {50, 50, 50, 150, 150, 50, 50, 150, 150, 50, 150, 150};
-	float texCoords[] = {0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1};
+	glDrawArrays(GL_POINTS, 0, cloud->count());
 	
-	glVertexPointer(2, GL_FLOAT, 0, verts);
-	glTexCoordPointer(2, GL_FLOAT, 0, texCoords);
+	//float verts[] = {50, 50, 50, 150, 150, 50, 50, 150, 150, 50, 150, 150};
+	//float texCoords[] = {0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1};
 	
-	glDrawArrays(GL_TRIANGLE_STRIP, 0, 6);
+	//glVertexPointer(2, GL_FLOAT, 0, verts);
+	//glTexCoordPointer(2, GL_FLOAT, 0, texCoords);
+	
+	//glDrawArrays(GL_TRIANGLE_STRIP, 0, 6);
 	
 	glDisableClientState(GL_VERTEX_ARRAY);
 	}
@@ -124,7 +133,6 @@ GLuint loadPNG(const char *filename){
 	[bitmap release];
 	return texture;
 	}
-
 
 
 //End of file

@@ -25,9 +25,9 @@ class DisplayBuffer{
 	private:
 		SpriteData *spriteVertices;
 		int spriteCount;
-		GLuint tex;
+		GLuint tex, programObject;
 	public:
-		DisplayBuffer();
+		DisplayBuffer(GLuint program);
 		~DisplayBuffer();
 		
 		void initSpriteVertices(int num);

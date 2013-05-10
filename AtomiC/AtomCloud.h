@@ -62,7 +62,7 @@ struct Atom{
 class AtomCloud{
 	private:
 		Atom *atoms;
-		float *_vertices;
+		float *_vertices, *_sizes;
 		int _count, _max;
 		
 		AtomLoc gravSource;
@@ -79,6 +79,8 @@ class AtomCloud{
 		bool addAtom(Atom a);
 		void fillAtoms(Atom a);
 		
+		void resizeAtoms(float baseSize, float sizeVariance);
+		
 		void setGravSource(float x, float y);
 		
 		void update();
@@ -88,6 +90,7 @@ class AtomCloud{
 		void updateVertexBuffer();
 		
 		float *vertexBuffer(){return _vertices;}
+		float *sizeBuffer(){return _sizes;}
 		int count(){return _count;}
 	};
 

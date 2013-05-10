@@ -13,6 +13,7 @@ AtomCloud::AtomCloud(int maxAtoms){
 	_max = maxAtoms;
 	atoms = new Atom[maxAtoms];
 	_vertices = new float[maxAtoms * 2];
+	_sizes = new float[maxAtoms];
 	gravEnabled = false;
 	}
 
@@ -38,6 +39,12 @@ void AtomCloud::fillAtoms(Atom a){
 	while(addAtom(a));
 	}
 
+void AtomCloud::resizeAtoms(float baseSize, float sizeVariance){
+	for(int a = 0; a < _count; a++){
+		atoms[a].size = variedValue(baseSize, sizeVariance);
+		}
+	}
+
 void AtomCloud::setGravSource(float x, float y){
 	gravSource.x = x;
 	gravSource.y = y;
@@ -53,7 +60,7 @@ void AtomCloud::initBurst(int num, float x, float y, float speed, float speedVar
 	_count = 0;
 		
 	for(int a = 0; a < num; a++){
-		addAtom(makeAtom(x, y, 1));
+		addAtom(makeAtom(x, y, 0));
 		atoms[a].vec = randomVector() * variedValue(speed, speedVariance);
 		}
 	burst.loc.x = x;
@@ -91,6 +98,7 @@ void AtomCloud::updateVertexBuffer(){
 	for(int a = 0; a < _count; a++){
 		_vertices[a * 2] = atoms[a].loc.x;
 		_vertices[a * 2 + 1] = atoms[a].loc.y;
+		_sizes[a] = atoms[a].size;
 		}
 	}
 
@@ -105,7 +113,8 @@ Atom makeAtom(float x, float y, float s){
 	ret.vec.x = 0;
 	ret.vec.y = 0;
 	
-	ret.size = s;
+	if(s)
+		ret.size = s;
 	
 	return ret;
 	}
